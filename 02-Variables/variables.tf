@@ -69,3 +69,14 @@ output "Second-Training" {
 output "Training-Details" {
   value = "AWS Timing - ${var.Training-Details["AWS"]}"
 }
+
+# So far we have declared value in variable block, we can use different source also
+# We can use the terraform.tfvars file for variables.
+
+variable "Fruits" {}
+
+output "Fruits" {
+  value = var.Fruits
+}
+
+
