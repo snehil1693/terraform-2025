@@ -79,4 +79,13 @@ output "Fruits" {
   value = var.Fruits
 }
 
+# we can give the variable value from the cli also
+
+variable "Country" {}
+
+output "Country" {
+  value = var.Country
+}
+
+
 
