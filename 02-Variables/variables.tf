@@ -18,3 +18,21 @@ variable "sample2" {}
 output "sample2" {
   value = var.sample2
 }
+
+#Variable datatypes
+
+variable "string" {
+  default = "Hello World"
+}
+
+variable "Numbers" {
+  default = 100
+}
+
+variable "boolean" {
+  default = false
+}
+
+output "datatypes" {
+  value = "String = ${var.string} , Number = ${var.Numbers} , Boolean = ${var.boolean}"
+}
