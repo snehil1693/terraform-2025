@@ -36,3 +36,36 @@ variable "boolean" {
 output "datatypes" {
   value = "String = ${var.string} , Number = ${var.Numbers} , Boolean = ${var.boolean}"
 }
+
+# Variables Types
+
+variable "Training" {
+  default = "DevOps"
+}
+
+variable "Trainings" {
+  default = [ "Devops" , "AWS" ]
+}
+
+variable "Training-Details" {
+  default = {
+    AWS = "6AM EST"
+    DEVOPS = "8AM EST"
+  }
+}
+
+output "Training" {
+  value = var.Training
+}
+
+output "Fisrt-Training" {
+  value = var.Trainings[0]
+}
+
+output "Second-Training" {
+  value = var.Trainings[1]
+}
+
+output "Training-Details" {
+  value = "AWS Timing - ${var.Training-Details["AWS"]}"
+}
