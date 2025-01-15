@@ -87,5 +87,10 @@ output "Country" {
   value = var.Country
 }
 
+# we can use the shell environment variables
 
+variable "Season" {}
+output "Season" {
+  value = var.Season
+}
 
