@@ -23,6 +23,15 @@ resource "aws_ec2_tag" "name-tag" {
   value                = element(var.COMPONENTS, count.index)
 }
 
+resource "aws_route53_record" "records" {
+  count                = local.LENGTH
+  name                 = element(var.COMPONENTS, count.index)
+  type                 = "A"
+  zone_id              = "Z0176100ZZ46UFQWCHBH"
+  ttl                  = 300
+  records              = [element(aws_spot_instance_request.instances.*.private_ip, count.index)]
+}
+
 resource "null_resource" "run_shell_scripting" {
   count                = local.LENGTH
   provisioner "remote-exec" {
