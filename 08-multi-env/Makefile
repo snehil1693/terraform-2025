@@ -12,10 +12,10 @@ prod-apply:  clean ## Install Frontend Component
 	@terraform init -backend-config=env/prod-backend.tfvars -no-color
 	@terraform apply -auto-apply -var-file=env/prod.tfvars -no-color
 
-dev-destory:  clean ## Install Frontend Component
+dev-destroy:  clean ## Install Frontend Component
 	@terraform init -backend-config=env/dev-backend.tfvars -no-color
 	@terraform destroy -auto-apply -var-file=env/dev.tfvars -no-color
 
-prod-destory:  clean ## Install Frontend Component
+prod-destroy:  clean ## Install Frontend Component
 	@terraform init -backend-config=env/prod-backend.tfvars -no-color
 	@terraform destroy -auto-apply -var-file=env/prod.tfvars -no-color
