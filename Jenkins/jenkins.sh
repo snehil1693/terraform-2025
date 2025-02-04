@@ -17,21 +17,33 @@ echo "Check the java version"
 java -version
 
 echo "################################"
-echo "Download the Jenkins Repo Key"
-sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "Install Required Dependencies"
+sudo apt-get install -y ca-certificates software-properties-common
 
 echo "################################"
-echo "Add Jenkins Key to Source List"
-echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+echo "Add the Jenkins Repository Key"
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
 
 echo "################################"
-echo "Update system file"
-sudo apt update -y
+echo "Add the Jenkins Repository"
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/" | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
 
 echo "################################"
-echo "Install Jenkins"
-sudo apt install jenkins -y
+echo "Update the Package List Again"
+sudo apt-get update -y
 
 echo "################################"
-echo "Check Jenkins Status"
+echo "Install the Jenkins"
+sudo apt-get install -y jenkins
+
+echo "################################"
+echo "Jenkins start and enable"
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+echo "################################"
+echo "Status of jenkins"
 sudo systemctl status jenkins
